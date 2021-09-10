@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ChildForm>
+  <Control Type="System.Windows.Forms.Panel" Name="homePanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.PictureBox" Name="homeButton">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+  <Control Type="System.Windows.Forms.Panel" Name="shapePanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.PictureBox" Name="shapesOpenCloseButton">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+  <Control Type="System.Windows.Forms.Panel" Name="exitPanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.PictureBox" Name="exitButton">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+  <Control Type="System.Windows.Forms.Panel" Name="settingsPanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.PictureBox" Name="settingsButton">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+  <Control Type="System.Windows.Forms.Panel" Name="uploadPanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.PictureBox" Name="pictureBox2">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+  <Control Type="System.Windows.Forms.Panel" Name="savePanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.PictureBox" Name="saveButton">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+  <Control Type="System.Windows.Forms.Panel" Name="sandboxPanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.Panel" Name="shapeItemsPanel">
+      <Visible>True</Visible>
+      <Control Type="System.Windows.Forms.Panel" Name="panel1">
+        <Visible>True</Visible>
+        <Control Type="System.Windows.Forms.PictureBox" Name="pictureBox5">
+          <Visible>True</Visible>
+        </Control>
+      </Control>
+      <Control Type="System.Windows.Forms.Panel" Name="shapePanelForm0">
+        <Visible>True</Visible>
+        <Control Type="System.Windows.Forms.PictureBox" Name="Téglalap.pngShape">
+          <Visible>True</Visible>
+        </Control>
+      </Control>
+    </Control>
+    <Control Type="System.Windows.Forms.PictureBox" Name="pictureBox5">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+  <Control Type="System.Windows.Forms.PictureBox" Name="mainMenuPanel">
+    <Visible>True</Visible>
+  </Control>
+  <Control Type="System.Windows.Forms.Panel" Name="subMenuPanel">
+    <Visible>True</Visible>
+    <Control Type="System.Windows.Forms.PictureBox" Name="editButton">
+      <Visible>True</Visible>
+    </Control>
+    <Control Type="System.Windows.Forms.PictureBox" Name="pictureBox1">
+      <Visible>True</Visible>
+    </Control>
+  </Control>
+</ChildForm>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>0</Id>
+  <Name>test</Name>
+  <Location>
+    <X>350</X>
+    <Y>350</Y>
+  </Location>
+  <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\bin\Debug\net5.0-windows\Assets\Shapes\Téglalap.png</Image>
+  <Size>
+    <Width>200</Width>
+    <Height>200</Height>
+  </Size>
+</Shape>
