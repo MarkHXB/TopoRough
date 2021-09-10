@@ -10,10 +10,12 @@ using System.Xml.Serialization;
 
 namespace TopoRough.Models
 {
-    public class MShape
+    public class MShapeFrame
     {
-        public static MShape Frame { get; set; } = new MShape();
-        public List<Shape> ChildElements { get; set; } = new List<Shape>();
+        public static MShapeFrame Frame { get; set; } = new MShapeFrame();
+    }
+    public class MShapeRoot
+    {
         public List<Shape> RootElements { get; set; } = new List<Shape>();
     }
     public class Shape 
@@ -39,7 +41,7 @@ namespace TopoRough.Models
             {
                 using(FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(MShape));
+                    XmlSerializer xml = new XmlSerializer(typeof(MShapeFrame));
                     xml.Serialize(stream, shapeObject);
                 }
             }
@@ -65,12 +67,11 @@ namespace TopoRough.Models
 
             try
             {
-
                 foreach (var panel in workPanel.Controls)
                 {
                     try
                     {
-                        MShape.Frame.RootElements.Add(Shape.ToObject(panel));
+                        MShapeFrame.Pa.Add(Shape.ToObject(panel));
 
                     }
                     catch (Exception x)
@@ -102,7 +103,6 @@ namespace TopoRough.Models
             try
             {
                 shape.Type = item.GetType().ToString();
-                MessageBox.Show(shape.Type);
                 if (shape.Type.Contains("Panel"))
                 {
                     Panel element = (Panel)item;
@@ -110,7 +110,7 @@ namespace TopoRough.Models
                     shape.Location = (Point)element.Location;
                     shape.Size = element.Size;
                 }
-                else if (shape.Type == "Label")
+                else if (shape.Type.Contains("Label"))
                 {
                     Label element = (Label)item;
                     shape.Name = $"{element.Name}";
@@ -118,7 +118,7 @@ namespace TopoRough.Models
                     shape.Size = element.Size;
                     shape.Text = element.Text;
                 }
-                else if (shape.Type == "PictureBox")
+                else if (shape.Type.Contains("PictureBox"))
                 {
                     PictureBox element = (PictureBox)item;
                     shape.Name = $"{element.Name}";
