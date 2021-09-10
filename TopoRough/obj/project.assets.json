@@ -1157,25 +1157,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bakon\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\bakon\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bakon\\source\\repos\\TopoRough\\TopoRough\\TopoRough.csproj",
+      "projectUniqueName": "C:\\Users\\bakon\\Documents\\C#\\TopoGit\\TopoRough\\TopoRough.csproj",
       "projectName": "TopoRough",
-      "projectPath": "C:\\Users\\bakon\\source\\repos\\TopoRough\\TopoRough\\TopoRough.csproj",
+      "projectPath": "C:\\Users\\bakon\\Documents\\C#\\TopoGit\\TopoRough\\TopoRough.csproj",
       "packagesPath": "C:\\Users\\bakon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bakon\\source\\repos\\TopoRough\\TopoRough\\obj\\",
+      "outputPath": "C:\\Users\\bakon\\Documents\\C#\\TopoGit\\TopoRough\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\bakon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"

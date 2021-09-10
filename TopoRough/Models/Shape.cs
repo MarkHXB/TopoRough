@@ -10,7 +10,12 @@ using System.Xml.Serialization;
 
 namespace TopoRough.Models
 {
-
+    public class MShape
+    {
+        public static MShape Frame { get; set; } = new MShape();
+        public List<Shape> ChildElements { get; set; } = new List<Shape>();
+        public List<Shape> RootElements { get; set; } = new List<Shape>();
+    }
     public class Shape 
     {
         public int Id { get; set; }
@@ -20,9 +25,13 @@ namespace TopoRough.Models
         public Point Location { get; set; }
         public string Image { get; set; }
         public Size Size { get; set; }
-        public List<Shape> childElements { get; set; }
-        public static List<Panel> ChildElements { get; set; }
-        public static Shape RootElement { get; set; }
+
+        /*
+         * 1. Frame = SandBoxPanel
+         * 2. RootElements = Panelok = ábrák
+         * 3. ChildElements = Picturebox ...
+         */
+        
 
         public static void Serialize(string fileName, object shapeObject)
         {
@@ -30,77 +39,25 @@ namespace TopoRough.Models
             {
                 using(FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(Shape));
+                    XmlSerializer xml = new XmlSerializer(typeof(MShape));
                     xml.Serialize(stream, shapeObject);
                 }
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                MessageBox.Show("Szerializációs problem");
             }
         }
 
         public static object Deserialize(string fileName)
         {
-            Control result = null;
-
-            if(fileName == null)
-            {
-                return null;
-            }
-
-            try
-            {
-                Shape shape = null;
-
-                using (FileStream fs = File.OpenRead($"{fileName}"))
-                {
-                    XmlSerializer xml = new XmlSerializer(typeof(Shape));
-                    shape = (Shape)xml.Deserialize(fs);
-                }
-
-                if(shape.Type == "panel")
-                {
-                    result = new Panel();
-                    result.Name = $"{shape.Name}{shape.Id}";
-                    result.Location = (Point)shape.Location;
-                    result.Size = shape.Size;
-                    
-                }
-                else if (shape.Type == "picturebox")
-                {
-                    result = new PictureBox();
-                    result.Name = $"{shape.Name}{shape.Id}";
-                    result.Location = (Point)shape.Location;
-                    result.Size = shape.Size;
-                    RootElements.Controls.Add(result);
-                }
-                else if (shape.Type == "label")
-                {
-                    result = new Label();
-                    result.Name = $"{shape.Name}{shape.Id}";
-                    result.Location = (Point)shape.Location;
-                    result.Size = shape.Size;
-                    result.Text = shape.Text;
-                    RootElements.Controls.Add(result);
-                }
-
-                return RootElements;
-            }
-            catch(FileLoadException fileLoadError)
-            {
-                MessageBox.Show(fileLoadError.Message);
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-
-            return result = new Panel();
+            return new object();
         }
 
         public static void Save(string fileName,Panel workPanel)
         {
+             
             if(fileName == null || workPanel == null)
             {
                 return;
@@ -108,46 +65,73 @@ namespace TopoRough.Models
 
             try
             {
-                RootElement = Shape.ToObject(workPanel);
 
-                foreach (var item in workPanel.Controls)
+                foreach (var panel in workPanel.Controls)
                 {
-                    ChildElements.Add((Panel)item);
-                }
-
-                foreach (var panel in ChildElements)
-                {
-                    //téglalap panelja
-                    foreach (var item in panel.Controls)
+                    try
                     {
-                        //téglalap picturebox ; button ; stb...
-                        Shape shape = Shape.ToObject(item);
+                        MShape.Frame.RootElements.Add(Shape.ToObject(panel));
+
                     }
-                    
+                    catch (Exception x)
+                    {
+                        MessageBox.Show(x.Message);
+                    }
+                    //téglalap panelja
+                }
+
+                foreach (var item in MShape.Frame.RootElements)
+                {
+                    MShape.Frame.ChildElements.Add(Shape.ToObject(item));
                 }
 
 
-                Serialize(fileName, RootElement);
+                Serialize(fileName, MShape.Frame);
 
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                MessageBox.Show("Save probléma");
             }
         }
         private static Shape ToObject(object item)
         {
             Shape shape = new Shape();
 
-            shape.Type = item.GetType().ToString();
-            if (shape.Type == "panel")
+            try
             {
-                Panel panel = (Panel)item;
-                shape.Name = $"{panel.Name}";
-                shape.Location = (Point)panel.Location;
-                shape.Size = panel.Size;              
+                shape.Type = item.GetType().ToString();
+                MessageBox.Show(shape.Type);
+                if (shape.Type.Contains("Panel"))
+                {
+                    Panel element = (Panel)item;
+                    shape.Name = $"{element.Name}";
+                    shape.Location = (Point)element.Location;
+                    shape.Size = element.Size;
+                }
+                else if (shape.Type == "Label")
+                {
+                    Label element = (Label)item;
+                    shape.Name = $"{element.Name}";
+                    shape.Location = (Point)element.Location;
+                    shape.Size = element.Size;
+                    shape.Text = element.Text;
+                }
+                else if (shape.Type == "PictureBox")
+                {
+                    PictureBox element = (PictureBox)item;
+                    shape.Name = $"{element.Name}";
+                    shape.Location = (Point)element.Location;
+                    shape.Size = element.Size;
+                    shape.Image = element.ImageLocation;
+                }
             }
-
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+            
 
             return shape;
         }

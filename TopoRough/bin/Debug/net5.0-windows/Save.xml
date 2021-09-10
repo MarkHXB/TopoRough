@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<MShape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ChildElements>
+    <Shape>
+      <Id>0</Id>
+      <Type>TopoRough.Models.Shape</Type>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <Size>
+        <Width>0</Width>
+        <Height>0</Height>
+      </Size>
+    </Shape>
+  </ChildElements>
+  <RootElements>
+    <Shape>
+      <Id>0</Id>
+      <Type>System.Windows.Forms.Panel</Type>
+      <Name>shapeItemsPanel</Name>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <Size>
+        <Width>228</Width>
+        <Height>521</Height>
+      </Size>
+    </Shape>
+  </RootElements>
+</MShape>

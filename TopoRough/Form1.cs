@@ -181,19 +181,19 @@ namespace TopoRough
 
         private void uploadLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Shape shape = new Shape
-            {
-                Id = 0,
-                Name = "test",
-                Type = "panel",
-                Location = new Point(100, 100),
-                Size = new Size(100, 100),
-                Image = Application.StartupPath+@"\Assets\Shapes\Téglalap.png"
-            };
-            Shape.Serialize("kecske.xml", shape);
+            //Shape shape = new Shape
+            //{
+            //    Id = 0,
+            //    Name = "test",
+            //    Type = "panel",
+            //    Location = new Point(100, 100),
+            //    Size = new Size(100, 100),
+            //    Image = Application.StartupPath+@"\Assets\Shapes\Téglalap.png"
+            //};
+            Shape.Save("Save.xml",sandboxPanel);
             MessageBox.Show("kész");
-            Panel test = (Panel)Shape.Deserialize("kecske.xml");
-            sandboxPanel.Controls.Add(test);
+            //Panel test = (Panel)Shape.Deserialize("kecske.xml");
+            //sandboxPanel.Controls.Add(test);
         }
 
         private void homePanel_Paint(object sender, PaintEventArgs e)

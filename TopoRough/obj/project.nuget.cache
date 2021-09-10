@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8kWLkUEtPtUFUDNF7+ltsN5p7d+CVBguieR5Ffr6G4OnsdzNWl94dKCpGzjB8xjv5mM5x5ThDgfzyYmTHzABrQ==",
+  "dgSpecHash": "0QmquLzq9uLxH/RkdZ0lopKXjqFIbHEtXhg2KUlH5WCh6ruSr3sXnn7mmez2hFLZcFXjQVn9EaAmGhgnJnjPhg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bakon\\source\\repos\\TopoRough\\TopoRough\\TopoRough.csproj",
+  "projectFilePath": "C:\\Users\\bakon\\Documents\\C#\\TopoGit\\TopoRough\\TopoRough.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bakon\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\bakon\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
