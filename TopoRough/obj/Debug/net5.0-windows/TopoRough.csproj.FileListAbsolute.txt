@@ -5,7 +5,6 @@ C:\Users\bakon\source\repos\TopoRough\TopoRough\bin\Debug\net5.0-windows\TopoRou
 C:\Users\bakon\source\repos\TopoRough\TopoRough\bin\Debug\net5.0-windows\TopoRough.dll
 C:\Users\bakon\source\repos\TopoRough\TopoRough\bin\Debug\net5.0-windows\ref\TopoRough.dll
 C:\Users\bakon\source\repos\TopoRough\TopoRough\bin\Debug\net5.0-windows\TopoRough.pdb
-C:\Users\bakon\source\repos\TopoRough\TopoRough\obj\Debug\net5.0-windows\TopoRough.csproj.AssemblyReference.cache
 C:\Users\bakon\source\repos\TopoRough\TopoRough\obj\Debug\net5.0-windows\TopoRough.MainScreen.resources
 C:\Users\bakon\source\repos\TopoRough\TopoRough\obj\Debug\net5.0-windows\TopoRough.csproj.GenerateResource.cache
 C:\Users\bakon\source\repos\TopoRough\TopoRough\obj\Debug\net5.0-windows\TopoRough.GeneratedMSBuildEditorConfig.editorconfig
@@ -70,3 +69,4 @@ C:\Users\bakon\Documents\C#\TopoGit\TopoRough\obj\Debug\net5.0-windows\TopoRough
 C:\Users\bakon\Documents\C#\TopoGit\TopoRough\obj\Debug\net5.0-windows\ref\TopoRough.dll
 C:\Users\bakon\Documents\C#\TopoGit\TopoRough\obj\Debug\net5.0-windows\TopoRough.pdb
 C:\Users\bakon\Documents\C#\TopoGit\TopoRough\obj\Debug\net5.0-windows\TopoRough.genruntimeconfig.cache
+C:\Users\bakon\source\repos\TopoRough\TopoRough\obj\Debug\net5.0-windows\TopoRough.csproj.AssemblyReference.cache

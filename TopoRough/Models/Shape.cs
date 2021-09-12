@@ -10,13 +10,10 @@ using System.Xml.Serialization;
 
 namespace TopoRough.Models
 {
-    public class MShapeFrame
-    {
-        public static MShapeFrame Frame { get; set; } = new MShapeFrame();
-    }
-    public class MShapeRoot
+    public class MShape
     {
         public List<Shape> RootElements { get; set; } = new List<Shape>();
+        public List<Shape> ChildElements { get; set; } = new List<Shape>();
     }
     public class Shape 
     {
@@ -37,18 +34,18 @@ namespace TopoRough.Models
 
         public static void Serialize(string fileName, object shapeObject)
         {
+          
             try
             {
                 using(FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(MShapeFrame));
+                    XmlSerializer xml = new XmlSerializer(typeof(MShape));
                     xml.Serialize(stream, shapeObject);
                 }
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
-                MessageBox.Show("Szerializációs problem");
             }
         }
 
@@ -59,6 +56,7 @@ namespace TopoRough.Models
 
         public static void Save(string fileName,Panel workPanel)
         {
+            MShape shape = new MShape();
              
             if(fileName == null || workPanel == null)
             {
@@ -71,7 +69,7 @@ namespace TopoRough.Models
                 {
                     try
                     {
-                        MShapeFrame.Pa.Add(Shape.ToObject(panel));
+                        shape.RootElements.Add(Shape.ToObject(panel));
 
                     }
                     catch (Exception x)
@@ -81,14 +79,13 @@ namespace TopoRough.Models
                     //téglalap panelja
                 }
 
-                foreach (var item in MShape.Frame.RootElements)
+                foreach (var item in shape.RootElements)
                 {
-                    MShape.Frame.ChildElements.Add(Shape.ToObject(item));
+                    shape.ChildElements.Add(Shape.ToObject(item));
                 }
 
 
-                Serialize(fileName, MShape.Frame);
-
+                Serialize(fileName, shape);
             }
             catch (Exception x)
             {

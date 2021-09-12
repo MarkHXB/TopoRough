@@ -39,8 +39,7 @@ namespace TopoRough
             this.mainMenuPanel = new System.Windows.Forms.PictureBox();
             this.sandboxPanel = new System.Windows.Forms.Panel();
             this.shapeItemsPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.téglalapPictureBox = new System.Windows.Forms.PictureBox();
             this.saveButton = new System.Windows.Forms.PictureBox();
             this.saveLink = new System.Windows.Forms.LinkLabel();
             this.savePanel = new System.Windows.Forms.Panel();
@@ -65,8 +64,7 @@ namespace TopoRough
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuPanel)).BeginInit();
             this.sandboxPanel.SuspendLayout();
             this.shapeItemsPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.téglalapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).BeginInit();
             this.savePanel.SuspendLayout();
             this.uploadPanel.SuspendLayout();
@@ -181,7 +179,7 @@ namespace TopoRough
             // 
             this.shapeItemsPanel.AutoScroll = true;
             this.shapeItemsPanel.BackColor = System.Drawing.Color.White;
-            this.shapeItemsPanel.Controls.Add(this.panel1);
+            this.shapeItemsPanel.Controls.Add(this.téglalapPictureBox);
             this.shapeItemsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.shapeItemsPanel.Location = new System.Drawing.Point(0, 0);
             this.shapeItemsPanel.Name = "shapeItemsPanel";
@@ -189,25 +187,15 @@ namespace TopoRough
             this.shapeItemsPanel.TabIndex = 0;
             this.shapeItemsPanel.Visible = false;
             // 
-            // panel1
+            // téglalapPictureBox
             // 
-            this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Location = new System.Drawing.Point(15, 65);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 0;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(25, 16);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(152, 81);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseDown);
-            this.pictureBox5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseUp);
+            this.téglalapPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("téglalapPictureBox.Image")));
+            this.téglalapPictureBox.Location = new System.Drawing.Point(33, 164);
+            this.téglalapPictureBox.Name = "téglalapPictureBox";
+            this.téglalapPictureBox.Size = new System.Drawing.Size(152, 81);
+            this.téglalapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.téglalapPictureBox.TabIndex = 0;
+            this.téglalapPictureBox.TabStop = false;
             // 
             // saveButton
             // 
@@ -487,8 +475,7 @@ namespace TopoRough
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuPanel)).EndInit();
             this.sandboxPanel.ResumeLayout(false);
             this.shapeItemsPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.téglalapPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).EndInit();
             this.savePanel.ResumeLayout(false);
             this.savePanel.PerformLayout();
@@ -538,7 +525,7 @@ namespace TopoRough
         private System.Windows.Forms.PictureBox shapesOpenCloseButton;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox téglalapPictureBox;
         private System.Windows.Forms.Panel homePanel;
         private System.Windows.Forms.PictureBox homeButton;
         private System.Windows.Forms.LinkLabel homeLink;

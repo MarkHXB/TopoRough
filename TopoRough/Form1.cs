@@ -25,7 +25,7 @@ namespace TopoRough
         //mentés
         State stateHandler = new State();
 
-
+        //Shape created
         private float zoom = 1f;
 
         private bool isEditing = true;
@@ -42,7 +42,7 @@ namespace TopoRough
             InitializeComponent();
             EditStatus();
             LoadShapeList.InitList(shapeItemsPanel);
-            pictureBox5.AllowDrop = true;
+            téglalapPictureBox.AllowDrop = true;
             sandboxPanel.AllowDrop = true; 
         }
 
@@ -203,35 +203,7 @@ namespace TopoRough
                 draw.DrawBorder(sender, e);
             }
         }
-        private void pictureBox5_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-            //test1.Location = new Point(e.X, e.Y);
-        }
 
-        private void pictureBox5_MouseUp(object sender, MouseEventArgs e)
-        {
-            PictureBox test = new PictureBox();
-            test = pictureBox5.Clone();
-            test.MouseDown += test_MouseDown;
-            test.MouseUp += test_MouseUp;
-
-            sandboxPanel.Controls.Add(test);
-
-            test.Location = new Point(e.X, e.Y);
-        }
-
-        private void test_MouseDown(object sender, MouseEventArgs e)
-        {
-            PictureBox test = (PictureBox)sender;
-            test.Location = new Point(e.X, e.Y);
-        }
-
-        private void test_MouseUp(object sender, MouseEventArgs e)
-        {
-            PictureBox test = (PictureBox)sender;
-            test.Location = new Point(e.X, e.Y);
-        }
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
@@ -250,7 +222,7 @@ namespace TopoRough
 
         private void sandboxPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            stateHandler.Save(sandboxPanel);
+            //stateHandler.Save(sandboxPanel);
         }
     }
     public static class ControlExtensions

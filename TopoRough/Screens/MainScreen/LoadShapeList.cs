@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 using TopoRough.Data;
+using TopoRough.Events;
 
 namespace TopoRough.Screens.MainScreen
 {
@@ -16,7 +17,7 @@ namespace TopoRough.Screens.MainScreen
         private static int margin = 10;
         private static int shapePanelHeight = 110;
         private static int padding = 5;
-
+        private static int zoomO =30;
         public static void InitList(Panel panel)
         {
             int panelWidth = panel.Width;
@@ -28,17 +29,14 @@ namespace TopoRough.Screens.MainScreen
 
             foreach (var shape in TestShapes.Shapes)
             {
-                Panel shapePanel = new Panel()
-                {
-                    Size = new Size(panelWidth - margin, shapePanelHeight),
-                    Location = new Point(0 + padding, lastItemLocY + padding),
-                    Name=$"shapePanelForm{counter}"
-                };
-                shape.Item.Location = new Point(shapePanel.Width / 2 - shape.Item.Width / 2, 0);
-                shapePanel.Controls.Add(shape.Item);
+                shape.Item.Size = new Size((panelWidth - margin)-zoomO, shapePanelHeight);
+                shape.Item.Name = $"shape{shape.Title}{counter}";
+                shape.Item.Location = new Point(panelWidth / 2 - shape.Item.Size.Width / 2,lastItemLocY);
 
+                shape.Item.MouseDown += EventsHandler.Shape_MouseDown;
+                shape.Item.MouseUp += EventsHandler.Shape_MouseUp;
 
-                panel.Controls.Add(shapePanel);
+                panel.Controls.Add(shape.Item);
 
                 lastItemLocY += shapePanelHeight + padding;
                 counter++;
