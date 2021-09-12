@@ -30,7 +30,7 @@ namespace TopoRough.Screens.MainScreen
             foreach (var shape in TestShapes.Shapes)
             {
                 shape.Item.Size = new Size((panelWidth - margin)-zoomO, shapePanelHeight);
-                shape.Item.Name = $"shape{shape.Title}{counter}";
+                shape.Item.Name = shape.Title.ToLower() + "Shape" + counter.ToString();
                 shape.Item.Location = new Point(panelWidth / 2 - shape.Item.Size.Width / 2,lastItemLocY);
 
                 shape.Item.MouseDown += EventsHandler.Shape_MouseDown;

@@ -42,7 +42,6 @@ namespace TopoRough
             InitializeComponent();
             EditStatus();
             LoadShapeList.InitList(shapeItemsPanel);
-            téglalapPictureBox.AllowDrop = true;
             sandboxPanel.AllowDrop = true; 
         }
 

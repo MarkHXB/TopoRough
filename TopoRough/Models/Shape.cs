@@ -10,10 +10,9 @@ using System.Xml.Serialization;
 
 namespace TopoRough.Models
 {
-    public class MShape
+    public class ConfigShape
     {
-        public List<Shape> RootElements { get; set; } = new List<Shape>();
-        public List<Shape> ChildElements { get; set; } = new List<Shape>();
+        public  List<Shape> Elements { get; set; } = new List<Shape>();
     }
     public class Shape 
     {
@@ -24,7 +23,7 @@ namespace TopoRough.Models
         public Point Location { get; set; }
         public string Image { get; set; }
         public Size Size { get; set; }
-
+        public Color Color { get; set; }
         /*
          * 1. Frame = SandBoxPanel
          * 2. RootElements = Panelok = ábrák
@@ -39,7 +38,7 @@ namespace TopoRough.Models
             {
                 using(FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
-                    XmlSerializer xml = new XmlSerializer(typeof(MShape));
+                    XmlSerializer xml = new XmlSerializer(typeof(ConfigShape));
                     xml.Serialize(stream, shapeObject);
                 }
             }
@@ -56,7 +55,7 @@ namespace TopoRough.Models
 
         public static void Save(string fileName,Panel workPanel)
         {
-            MShape shape = new MShape();
+            ConfigShape shape = new ConfigShape();
              
             if(fileName == null || workPanel == null)
             {
@@ -65,25 +64,12 @@ namespace TopoRough.Models
 
             try
             {
-                foreach (var panel in workPanel.Controls)
+                
+                foreach (var item in workPanel.Controls)
                 {
-                    try
-                    {
-                        shape.RootElements.Add(Shape.ToObject(panel));
-
-                    }
-                    catch (Exception x)
-                    {
-                        MessageBox.Show(x.Message);
-                    }
-                    //téglalap panelja
+                    if(item.GetType().ToString().Contains("PictureBox"))
+                        shape.Elements.Add(Shape.ToObject(item));
                 }
-
-                foreach (var item in shape.RootElements)
-                {
-                    shape.ChildElements.Add(Shape.ToObject(item));
-                }
-
 
                 Serialize(fileName, shape);
             }

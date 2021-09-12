@@ -55,15 +55,32 @@ namespace TopoRough.Data
                     {
                         ImageLocation = $@"C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\{file}",
                         SizeMode = PictureBoxSizeMode.Zoom,
-                        Name = $"{file}Shape",
-                        Size = new Size(90, 90),
-                    }
+                        
+                    },
+                    Title = ShapeName(file)
                 });
 
                 counter++;
             }
 
             return shapes;
+        }
+
+        private static string ShapeName(string input)
+        {
+            string output = "";
+
+            try
+            {
+                int startDel = input.IndexOf(".");
+                output = input.Remove(startDel);
+            }
+            catch (Exception x)
+            {
+                output = input;
+            }
+
+            return output;
         }
     }
 }

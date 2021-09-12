@@ -1,32 +1,20 @@
 <?xml version="1.0"?>
-<MShape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <RootElements>
+<ConfigShape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Elements>
     <Shape>
       <Id>0</Id>
-      <Type>System.Windows.Forms.Panel</Type>
-      <Name>shapeItemsPanel</Name>
+      <Type>System.Windows.Forms.PictureBox</Type>
+      <Name>téglalapShape1</Name>
       <Location>
-        <X>0</X>
-        <Y>0</Y>
+        <X>121</X>
+        <Y>61</Y>
       </Location>
+      <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Téglalap.png</Image>
       <Size>
-        <Width>228</Width>
-        <Height>521</Height>
+        <Width>188</Width>
+        <Height>110</Height>
       </Size>
+      <Color />
     </Shape>
-  </RootElements>
-  <ChildElements>
-    <Shape>
-      <Id>0</Id>
-      <Type>TopoRough.Models.Shape</Type>
-      <Location>
-        <X>0</X>
-        <Y>0</Y>
-      </Location>
-      <Size>
-        <Width>0</Width>
-        <Height>0</Height>
-      </Size>
-    </Shape>
-  </ChildElements>
-</MShape>
+  </Elements>
+</ConfigShape>

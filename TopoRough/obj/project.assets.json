@@ -1163,11 +1163,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bakon\\source\\repos\\TopoRough\\TopoRough\\TopoRough.csproj",
+      "projectUniqueName": "C:\\Users\\bakon\\source\\repos\\TopoRough_2\\TopoRough\\TopoRough.csproj",
       "projectName": "TopoRough",
-      "projectPath": "C:\\Users\\bakon\\source\\repos\\TopoRough\\TopoRough\\TopoRough.csproj",
+      "projectPath": "C:\\Users\\bakon\\source\\repos\\TopoRough_2\\TopoRough\\TopoRough.csproj",
       "packagesPath": "C:\\Users\\bakon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bakon\\source\\repos\\TopoRough\\TopoRough\\obj\\",
+      "outputPath": "C:\\Users\\bakon\\source\\repos\\TopoRough_2\\TopoRough\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
