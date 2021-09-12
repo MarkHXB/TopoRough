@@ -23,5 +23,7 @@ namespace TopoRough
         }
 
         private static string activeMenuSection = "homePanel";
+
+        public static int GeneratedShapes = 0;
     }
 }

@@ -16,6 +16,7 @@ namespace TopoRough.Data
         public PictureBox Item { get; set; }
         public string Title { get; set; }
         public static List<TestShapes> Shapes = FillShapeList();
+        public bool IsAlive { get; set; } = false;
 
         public static List<string> FolderExam()
         {

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TopoRough.Data;
+using TopoRough.Screens.MainScreen;
 
 namespace TopoRough.Events
 {
@@ -18,6 +20,15 @@ namespace TopoRough.Events
             root.MouseUp += shapeMoving_MouseUp;
             root.MouseDown -= Shape_MouseUp;
 
+            foreach (var item in TestShapes.Shapes)
+            {
+                if (item.Item.Name == root.Name)
+                {
+                    item.IsAlive = false;
+                    
+                }
+            }
+
             foreach (var item in Form.ActiveForm.Controls)
             {
                 Control ctl = (Control)item;
@@ -25,9 +36,20 @@ namespace TopoRough.Events
                 {
                     Panel alPanel = (Panel)ctl;
                     if(alPanel.Name == "sandboxPanel")
+                    {
                         alPanel.Controls.Add(root);
+                        alPanel.Controls.Remove(root);
+                        foreach (Control control in alPanel.Controls)
+                        {
+                            if(control.Name == "shapeItemsPanel")
+                            {
+                                LoadShapeList.InitList((Panel)control);
+                            }
+                        }
+                    }  
                 }
             }
+
             
         }
 

@@ -32,7 +32,6 @@ namespace TopoRough
         private bool lastOpenShapes = false;
 
 
-
         //COMPONENTS & INTERFECES
         private Drawing draw = new Drawing();
         private FormHandler formHandler = new FormHandler();
@@ -42,7 +41,7 @@ namespace TopoRough
             InitializeComponent();
             EditStatus();
             LoadShapeList.InitList(shapeItemsPanel);
-            sandboxPanel.AllowDrop = true; 
+            sandboxPanel.AllowDrop = true;
         }
 
         private void Show_On_MainMenu()

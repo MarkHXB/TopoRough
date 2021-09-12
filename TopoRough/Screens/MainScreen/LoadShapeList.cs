@@ -29,17 +29,24 @@ namespace TopoRough.Screens.MainScreen
 
             foreach (var shape in TestShapes.Shapes)
             {
-                shape.Item.Size = new Size((panelWidth - margin)-zoomO, shapePanelHeight);
-                shape.Item.Name = shape.Title.ToLower() + "Shape" + counter.ToString();
-                shape.Item.Location = new Point(panelWidth / 2 - shape.Item.Size.Width / 2,lastItemLocY);
+                if(shape.IsAlive == false)
+                {
+                    counter = GlobalVariables.GeneratedShapes;
 
-                shape.Item.MouseDown += EventsHandler.Shape_MouseDown;
-                shape.Item.MouseUp += EventsHandler.Shape_MouseUp;
+                    shape.Item.Size = new Size((panelWidth - margin) - zoomO, shapePanelHeight);
+                    shape.Item.Name = shape.Title.ToLower() + "Shape" + counter.ToString();
+                    shape.Item.Location = new Point(panelWidth / 2 - shape.Item.Size.Width / 2, lastItemLocY);
 
-                panel.Controls.Add(shape.Item);
+                    shape.Item.MouseDown += EventsHandler.Shape_MouseDown;
+                    shape.Item.MouseUp += EventsHandler.Shape_MouseUp;
 
-                lastItemLocY += shapePanelHeight + padding;
-                counter++;
+                    panel.Controls.Add(shape.Item);
+
+                    lastItemLocY += shapePanelHeight + padding;
+                    GlobalVariables.GeneratedShapes++;
+
+                    shape.IsAlive = true;
+                }             
             }
         }
     }
