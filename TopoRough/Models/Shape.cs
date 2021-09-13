@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using TopoRough.Events;
 
 namespace TopoRough.Models
 {
@@ -40,6 +41,7 @@ namespace TopoRough.Models
                 {
                     XmlSerializer xml = new XmlSerializer(typeof(ConfigShape));
                     xml.Serialize(stream, shapeObject);
+                    
                 }
             }
             catch (Exception x)
@@ -48,12 +50,25 @@ namespace TopoRough.Models
             }
         }
 
-        public static object Deserialize(string fileName)
+        public static ConfigShape Deserialize(string fileName = "Save.xml")
         {
-            return new object();
+            ConfigShape Output = new ConfigShape();
+            try
+            {
+                using (FileStream stream = new FileStream(fileName, FileMode.Open))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(ConfigShape));
+                    Output = (ConfigShape)xml.Deserialize(stream);
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+            return Output;
         }
 
-        public static void Save(string fileName,Panel workPanel)
+        public static void Save(Panel workPanel,string fileName = "Save.xml")
         {
             ConfigShape shape = new ConfigShape();
              
@@ -78,6 +93,34 @@ namespace TopoRough.Models
                 MessageBox.Show(x.Message);
                 MessageBox.Show("Save probléma");
             }
+        }
+        public static List<PictureBox> Load(string fileName = "Save.xml")
+        {
+            if (fileName == null)
+            {
+                return new List<PictureBox>();
+            }
+
+            List<PictureBox> Output = new List<PictureBox>();
+
+            try
+            {
+                ConfigShape loadedShapes = Deserialize();
+                foreach (var shape in loadedShapes.Elements)
+                {
+                    PictureBox generatedPictureBox = (PictureBox)Shape.ToPictureBox(shape);
+
+                    AppendEvents(generatedPictureBox);
+
+                    Output.Add(generatedPictureBox);
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+            return Output;
         }
         private static Shape ToObject(object item)
         {
@@ -117,6 +160,33 @@ namespace TopoRough.Models
             
 
             return shape;
+        }
+        private static PictureBox ToPictureBox(Shape shape)
+        {
+            PictureBox pictureBox = new PictureBox();
+
+            try
+            {
+                if(shape.Type.Contains("PictureBox"))
+                {
+                    pictureBox.Name = shape.Name;
+                    pictureBox.Size = shape.Size;
+                    pictureBox.Location = shape.Location;
+                    pictureBox.Load(shape.Image);
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+            return pictureBox;
+        }
+        private static void AppendEvents(PictureBox pictureBox)
+        {
+            pictureBox.MouseDown += EventsHandler.Shape_MouseDown;
+            pictureBox.MouseUp += EventsHandler.Shape_MouseUp;
         }
     }
 }

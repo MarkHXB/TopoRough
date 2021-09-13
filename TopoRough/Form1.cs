@@ -31,6 +31,8 @@ namespace TopoRough
         private bool isEditing = true;
         private bool lastOpenShapes = false;
 
+        private bool LoadingIsValid = true;
+
 
         //COMPONENTS & INTERFECES
         private Drawing draw = new Drawing();
@@ -179,19 +181,26 @@ namespace TopoRough
 
         private void uploadLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //Shape shape = new Shape
-            //{
-            //    Id = 0,
-            //    Name = "test",
-            //    Type = "panel",
-            //    Location = new Point(100, 100),
-            //    Size = new Size(100, 100),
-            //    Image = Application.StartupPath+@"\Assets\Shapes\Téglalap.png"
-            //};
-            Shape.Save("Save.xml",sandboxPanel);
-            MessageBox.Show("kész");
-            //Panel test = (Panel)Shape.Deserialize("kecske.xml");
-            //sandboxPanel.Controls.Add(test);
+            if(sandboxPanel.Controls.Count == 0)
+            {
+                LoadingIsValid = true;
+            }
+            if(LoadingIsValid == true)
+            {
+                try
+                {
+                    List<PictureBox> loadedShapes = Shape.Load();
+                    sandboxPanel.Controls.AddRange(loadedShapes.ToArray());
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+                finally
+                {
+                    LoadingIsValid = false;
+                }
+            }
         }
 
         private void homePanel_Paint(object sender, PaintEventArgs e)
@@ -210,17 +219,46 @@ namespace TopoRough
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            stateHandler.Save(sandboxPanel);
+            Shape.Save(sandboxPanel);
         }
 
         private void saveLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            stateHandler.Save(sandboxPanel);
+            Shape.Save(sandboxPanel);
         }
 
         private void sandboxPanel_MouseDown(object sender, MouseEventArgs e)
         {
             //stateHandler.Save(sandboxPanel);
+        }
+
+        private void shapeItemsPanel_MouseLeave(object sender, EventArgs e)
+        {
+            LoadShapeList.InitList(shapeItemsPanel);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (sandboxPanel.Controls.Count == 0)
+            {
+                LoadingIsValid = true;
+            }
+            if (LoadingIsValid == true)
+            {
+                try
+                {
+                    List<PictureBox> loadedShapes = Shape.Load();
+                    sandboxPanel.Controls.AddRange(loadedShapes.ToArray());
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+                finally
+                {
+                    LoadingIsValid = false;
+                }
+            }
         }
     }
     public static class ControlExtensions

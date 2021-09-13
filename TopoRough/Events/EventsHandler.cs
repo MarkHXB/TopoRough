@@ -38,14 +38,6 @@ namespace TopoRough.Events
                     if(alPanel.Name == "sandboxPanel")
                     {
                         alPanel.Controls.Add(root);
-                        alPanel.Controls.Remove(root);
-                        foreach (Control control in alPanel.Controls)
-                        {
-                            if(control.Name == "shapeItemsPanel")
-                            {
-                                LoadShapeList.InitList((Panel)control);
-                            }
-                        }
                     }  
                 }
             }

@@ -44,7 +44,7 @@ namespace TopoRough
             this.savePanel = new System.Windows.Forms.Panel();
             this.uploadPanel = new System.Windows.Forms.Panel();
             this.uploadLink = new System.Windows.Forms.LinkLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.uploadButton = new System.Windows.Forms.PictureBox();
             this.settingsPanel = new System.Windows.Forms.Panel();
             this.settingsLink = new System.Windows.Forms.LinkLabel();
             this.settingsButton = new System.Windows.Forms.PictureBox();
@@ -65,7 +65,7 @@ namespace TopoRough
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).BeginInit();
             this.savePanel.SuspendLayout();
             this.uploadPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uploadButton)).BeginInit();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).BeginInit();
             this.exitPanel.SuspendLayout();
@@ -182,6 +182,7 @@ namespace TopoRough
             this.shapeItemsPanel.Size = new System.Drawing.Size(228, 521);
             this.shapeItemsPanel.TabIndex = 0;
             this.shapeItemsPanel.Visible = false;
+            this.shapeItemsPanel.MouseLeave += new System.EventHandler(this.shapeItemsPanel_MouseLeave);
             // 
             // saveButton
             // 
@@ -230,7 +231,7 @@ namespace TopoRough
             this.uploadPanel.BackColor = System.Drawing.Color.Gold;
             this.uploadPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.uploadPanel.Controls.Add(this.uploadLink);
-            this.uploadPanel.Controls.Add(this.pictureBox2);
+            this.uploadPanel.Controls.Add(this.uploadButton);
             this.uploadPanel.Location = new System.Drawing.Point(3, 271);
             this.uploadPanel.Name = "uploadPanel";
             this.uploadPanel.Size = new System.Drawing.Size(183, 61);
@@ -254,17 +255,18 @@ namespace TopoRough
             this.uploadLink.VisitedLinkColor = System.Drawing.Color.Black;
             this.uploadLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.uploadLink_LinkClicked);
             // 
-            // pictureBox2
+            // uploadButton
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Gold;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(18, 14);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(49, 34);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.uploadButton.BackColor = System.Drawing.Color.Gold;
+            this.uploadButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uploadButton.Image = ((System.Drawing.Image)(resources.GetObject("uploadButton.Image")));
+            this.uploadButton.Location = new System.Drawing.Point(18, 14);
+            this.uploadButton.Name = "uploadButton";
+            this.uploadButton.Size = new System.Drawing.Size(49, 34);
+            this.uploadButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.uploadButton.TabIndex = 4;
+            this.uploadButton.TabStop = false;
+            this.uploadButton.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // settingsPanel
             // 
@@ -465,7 +467,7 @@ namespace TopoRough
             this.savePanel.PerformLayout();
             this.uploadPanel.ResumeLayout(false);
             this.uploadPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uploadButton)).EndInit();
             this.settingsPanel.ResumeLayout(false);
             this.settingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).EndInit();
@@ -495,7 +497,7 @@ namespace TopoRough
         private System.Windows.Forms.Panel savePanel;
         private System.Windows.Forms.Panel uploadPanel;
         private System.Windows.Forms.LinkLabel uploadLink;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox uploadButton;
         private System.Windows.Forms.Panel settingsPanel;
         private System.Windows.Forms.LinkLabel settingsLink;
         private System.Windows.Forms.PictureBox settingsButton;

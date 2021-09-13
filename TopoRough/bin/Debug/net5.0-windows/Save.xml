@@ -4,12 +4,42 @@
     <Shape>
       <Id>0</Id>
       <Type>System.Windows.Forms.PictureBox</Type>
-      <Name>téglalapShape1</Name>
+      <Name>téglalapShape3</Name>
       <Location>
-        <X>121</X>
-        <Y>61</Y>
+        <X>430</X>
+        <Y>82</Y>
       </Location>
       <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Téglalap.png</Image>
+      <Size>
+        <Width>188</Width>
+        <Height>110</Height>
+      </Size>
+      <Color />
+    </Shape>
+    <Shape>
+      <Id>0</Id>
+      <Type>System.Windows.Forms.PictureBox</Type>
+      <Name>téglalapShape1</Name>
+      <Location>
+        <X>704</X>
+        <Y>79</Y>
+      </Location>
+      <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Téglalap.png</Image>
+      <Size>
+        <Width>188</Width>
+        <Height>110</Height>
+      </Size>
+      <Color />
+    </Shape>
+    <Shape>
+      <Id>0</Id>
+      <Type>System.Windows.Forms.PictureBox</Type>
+      <Name>csillagShape0</Name>
+      <Location>
+        <X>196</X>
+        <Y>75</Y>
+      </Location>
+      <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Csillag.png</Image>
       <Size>
         <Width>188</Width>
         <Height>110</Height>

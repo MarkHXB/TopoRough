@@ -20,6 +20,8 @@ namespace TopoRough.Screens.MainScreen
         private static int zoomO =30;
         public static void InitList(Panel panel)
         {
+            TestShapes.RenderShapeList();
+
             int panelWidth = panel.Width;
             int panelHeight = panel.Height;
 
@@ -46,7 +48,11 @@ namespace TopoRough.Screens.MainScreen
                     GlobalVariables.GeneratedShapes++;
 
                     shape.IsAlive = true;
-                }             
+                }
+                else
+                {
+                    lastItemLocY += shapePanelHeight + padding;
+                }          
             }
         }
     }

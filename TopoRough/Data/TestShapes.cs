@@ -83,5 +83,10 @@ namespace TopoRough.Data
 
             return output;
         }
+
+        public static void RenderShapeList()
+        {
+            Shapes = FillShapeList();
+        }
     }
 }
