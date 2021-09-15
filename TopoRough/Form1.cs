@@ -16,7 +16,7 @@ using TopoRough.Constants;
 using TopoRough.Models;
 
 using FormSerialisation;
-
+using TopoRough.Events;
 
 namespace TopoRough
 {
@@ -25,13 +25,15 @@ namespace TopoRough
         //mentés
         State stateHandler = new State();
 
+        private bool isLinking = false;
+
         //Shape created
         private float zoom = 1f;
 
         private bool isEditing = true;
         private bool lastOpenShapes = false;
 
-        private bool LoadingIsValid = true;
+        private bool AskedExitSave = false;
 
 
         //COMPONENTS & INTERFECES
@@ -44,6 +46,7 @@ namespace TopoRough
             EditStatus();
             LoadShapeList.InitList(shapeItemsPanel);
             sandboxPanel.AllowDrop = true;
+            EventsHandler.Load_Work(sandboxPanel);
         }
 
         private void Show_On_MainMenu()
@@ -116,7 +119,14 @@ namespace TopoRough
         {
             if (isEditing)
             {
-
+                if(editToolPanel.Visible == true)
+                {
+                    editToolPanel.Visible = false;
+                }
+                else
+                {
+                    editToolPanel.Visible = true;
+                }
             }
         }
 
@@ -124,7 +134,14 @@ namespace TopoRough
         {
             if (isEditing)
             {
-
+                if (editToolPanel.Visible == true)
+                {
+                    editToolPanel.Visible = false;
+                }
+                else
+                {
+                    editToolPanel.Visible = true;
+                }
             }
         }
 
@@ -142,7 +159,7 @@ namespace TopoRough
                     shapeItemsPanel.Visible = false;
                     lastOpenShapes = false;
                 }
-                    
+
             }
         }
 
@@ -154,11 +171,15 @@ namespace TopoRough
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+            AskedExitSave = true;
+            formHandler.Exit_On_Save(sandboxPanel);
             Application.Exit();
         }
 
         private void exitLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            AskedExitSave = true;
+            formHandler.Exit_On_Save(sandboxPanel);
             Application.Exit();
         }
 
@@ -181,26 +202,7 @@ namespace TopoRough
 
         private void uploadLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(sandboxPanel.Controls.Count == 0)
-            {
-                LoadingIsValid = true;
-            }
-            if(LoadingIsValid == true)
-            {
-                try
-                {
-                    List<PictureBox> loadedShapes = Shape.Load();
-                    sandboxPanel.Controls.AddRange(loadedShapes.ToArray());
-                }
-                catch (Exception x)
-                {
-                    MessageBox.Show(x.Message);
-                }
-                finally
-                {
-                    LoadingIsValid = false;
-                }
-            }
+            EventsHandler.Load_Work(sandboxPanel);
         }
 
         private void homePanel_Paint(object sender, PaintEventArgs e)
@@ -214,17 +216,18 @@ namespace TopoRough
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
-            
+            this.Width = Properties.Settings.Default.ScreenSize.X;
+            this.Height = Properties.Settings.Default.ScreenSize.Y;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Shape.Save(sandboxPanel);
+            EventsHandler.Save_Work(sandboxPanel);
         }
 
         private void saveLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Shape.Save(sandboxPanel);
+            EventsHandler.Save_Work(sandboxPanel);
         }
 
         private void sandboxPanel_MouseDown(object sender, MouseEventArgs e)
@@ -239,25 +242,36 @@ namespace TopoRough
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (sandboxPanel.Controls.Count == 0)
+            EventsHandler.Load_Work(sandboxPanel);
+        }
+
+        private void MainScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(AskedExitSave == false)
+                formHandler.Exit_On_Save(sandboxPanel);  
+        }
+
+        private void createChainButton_Click(object sender, EventArgs e)
+        {
+            if(isLinking == false)
             {
-                LoadingIsValid = true;
+                createChainButton.Image = Properties.Resources.times_solid;
+                this.Cursor = new Cursor(@"C:\Users\bakon\source\repos\TopoRough_2\TopoRough\Assets\Icons\link-solid.ico");
+                isLinking = true;
             }
-            if (LoadingIsValid == true)
+            else
             {
-                try
-                {
-                    List<PictureBox> loadedShapes = Shape.Load();
-                    sandboxPanel.Controls.AddRange(loadedShapes.ToArray());
-                }
-                catch (Exception x)
-                {
-                    MessageBox.Show(x.Message);
-                }
-                finally
-                {
-                    LoadingIsValid = false;
-                }
+                createChainButton.Image = Properties.Resources.link_solid;
+                this.Cursor = Cursors.Default;
+                isLinking = false;
+            }
+        }
+
+        private void testShape1_Click(object sender, EventArgs e)
+        {
+            if (isLinking)
+            {
+               
             }
         }
     }
@@ -282,6 +296,11 @@ namespace TopoRough
             instance.Parent = null;
 
             return instance;
+        }
+
+        public static T Cast<T>(object o)
+        {
+            return (T)o;
         }
     }
 }

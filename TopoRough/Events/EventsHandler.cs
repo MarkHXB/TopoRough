@@ -6,18 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TopoRough.Data;
+using TopoRough.Models;
 using TopoRough.Screens.MainScreen;
 
 namespace TopoRough.Events
 {
     public class EventsHandler
     {
+        private static Point PanelMouseDownLocation = new Point();
         internal static void Shape_MouseUp(object sender, MouseEventArgs e)
         {
             PictureBox root = (PictureBox)sender;
 
             root.MouseDown += shapeMoving_MouseDown;
-            root.MouseUp += shapeMoving_MouseUp;
+            root.MouseMove += shapeMoving_MouseMove;
             root.MouseDown -= Shape_MouseUp;
 
             foreach (var item in TestShapes.Shapes)
@@ -45,22 +47,73 @@ namespace TopoRough.Events
             
         }
 
-        private static void shapeMoving_MouseUp(object sender, MouseEventArgs e)
+        internal static void shapeMoving_MouseMove(object sender, MouseEventArgs e)
         {
-            PictureBox root = (PictureBox)sender;
-            root.Location = new Point(e.X, e.Y);
+            if (e.Button == MouseButtons.Left)
+            {
+                PictureBox root = (PictureBox)sender;
+                root.Left += e.X - PanelMouseDownLocation.X;
+
+                root.Top += e.Y - PanelMouseDownLocation.Y;
+
+            }
         }
 
-        private static void shapeMoving_MouseDown(object sender, MouseEventArgs e)
+
+        internal static void shapeMoving_MouseDown(object sender, MouseEventArgs e)
         {
-            PictureBox root = (PictureBox)sender;
-            root.Location = new Point(e.X, e.Y);
+            if (e.Button == MouseButtons.Left) PanelMouseDownLocation = e.Location;
         }
 
-        internal static void Shape_MouseDown(object sender, MouseEventArgs e)
+        internal static void Save_Work(Panel sandboxPanel)
         {
-            PictureBox root = (PictureBox)sender;
-            root.Location = new Point(e.X, e.Y);
+            State.Save(sandboxPanel);
+        }
+
+        internal static void Load_Work(Panel sandboxPanel)
+        {
+            if (sandboxPanel.Controls.Count == 0)
+            {
+                GlobalVariables.LoadingIsValid = true;
+            }
+            if (GlobalVariables.LoadingIsValid == true)
+            {
+                try
+                {
+                    List<PictureBox> loadedShapes = State.Load();
+                    sandboxPanel.Controls.AddRange(loadedShapes.ToArray());
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+                finally
+                {
+                    GlobalVariables.LoadingIsValid = false;
+                }
+            }
+        }
+
+        internal static void Save_User_Settings(object workItem)
+        {
+            try
+            {
+                var panel = Cast(workItem, typeof(Panel));
+                Properties.Settings.Default.LastOpenedWorkName = GlobalVariables.RecentlyOpenedWorkName;
+                Properties.Settings.Default.ScreenSize = new Point(panel.ClientSize.Width, panel.ClientSize.Height);
+                Properties.Settings.Default.ScreenLocation = new Point(panel.Location.X, panel.Location.Y);
+
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+            
+        }
+        public static dynamic Cast(dynamic obj, Type castTo)
+        {
+            return Convert.ChangeType(obj, castTo);
         }
     }
 }

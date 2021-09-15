@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TopoRough.Events;
 
 namespace TopoRough.Models
 {
@@ -44,6 +45,20 @@ namespace TopoRough.Models
             finally
             {
                 PreviousPage = currentForm;
+                GlobalVariables.LoadingIsValid = true;
+            }
+        }
+        public void Exit_On_Save(Panel sandboxPanel)
+        {
+            DialogResult dialogResult = MessageBox.Show("Igen", "Szeretnéd menteni a jelenlegi munkádat?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                EventsHandler.Save_Work(sandboxPanel);
+                EventsHandler.Save_User_Settings(sandboxPanel);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                EventsHandler.Save_User_Settings(sandboxPanel);
             }
         }
     }

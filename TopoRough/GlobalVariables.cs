@@ -25,5 +25,7 @@ namespace TopoRough
         private static string activeMenuSection = "homePanel";
 
         public static int GeneratedShapes = 0;
+        public static string RecentlyOpenedWorkName = "";
+        public static bool LoadingIsValid = true;
     }
 }

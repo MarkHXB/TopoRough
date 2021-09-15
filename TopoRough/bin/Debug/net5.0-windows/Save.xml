@@ -4,25 +4,10 @@
     <Shape>
       <Id>0</Id>
       <Type>System.Windows.Forms.PictureBox</Type>
-      <Name>téglalapShape3</Name>
-      <Location>
-        <X>430</X>
-        <Y>82</Y>
-      </Location>
-      <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Téglalap.png</Image>
-      <Size>
-        <Width>188</Width>
-        <Height>110</Height>
-      </Size>
-      <Color />
-    </Shape>
-    <Shape>
-      <Id>0</Id>
-      <Type>System.Windows.Forms.PictureBox</Type>
       <Name>téglalapShape1</Name>
       <Location>
-        <X>704</X>
-        <Y>79</Y>
+        <X>127</X>
+        <Y>415</Y>
       </Location>
       <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Téglalap.png</Image>
       <Size>
@@ -36,8 +21,53 @@
       <Type>System.Windows.Forms.PictureBox</Type>
       <Name>csillagShape0</Name>
       <Location>
-        <X>196</X>
-        <Y>75</Y>
+        <X>771</X>
+        <Y>273</Y>
+      </Location>
+      <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Csillag.png</Image>
+      <Size>
+        <Width>188</Width>
+        <Height>110</Height>
+      </Size>
+      <Color />
+    </Shape>
+    <Shape>
+      <Id>0</Id>
+      <Type>System.Windows.Forms.PictureBox</Type>
+      <Name>téglalapShape3</Name>
+      <Location>
+        <X>971</X>
+        <Y>113</Y>
+      </Location>
+      <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Téglalap.png</Image>
+      <Size>
+        <Width>188</Width>
+        <Height>110</Height>
+      </Size>
+      <Color />
+    </Shape>
+    <Shape>
+      <Id>0</Id>
+      <Type>System.Windows.Forms.PictureBox</Type>
+      <Name>téglalapShape1</Name>
+      <Location>
+        <X>1048</X>
+        <Y>748</Y>
+      </Location>
+      <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Téglalap.png</Image>
+      <Size>
+        <Width>188</Width>
+        <Height>110</Height>
+      </Size>
+      <Color />
+    </Shape>
+    <Shape>
+      <Id>0</Id>
+      <Type>System.Windows.Forms.PictureBox</Type>
+      <Name>csillagShape0</Name>
+      <Location>
+        <X>214</X>
+        <Y>120</Y>
       </Location>
       <Image>C:\Users\bakon\source\repos\TopoRough\TopoRough\Assets\Shapes\Csillag.png</Image>
       <Size>

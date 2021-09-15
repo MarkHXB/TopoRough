@@ -18,94 +18,101 @@ namespace TopoRough.Models
 
     interface IState
     {
-        //for saving the sandbox panel content
-        /// <summary>
-        /// Save all the content of panel to a bitmap. It can override already existed file and save as a new one.
-        /// </summary>
-        /// <param name="panel"></param>
-        void Save(Panel panel);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        bool PanelBmpExist(string path = "./");
-
-        Bitmap ConvertPanelToBitmap(Panel panel);
+        
     }
 
     public class State:IState
     {
-        public Bitmap ConvertPanelToBitmap(Panel panel)
+        public static void Serialize(string fileName, object shapeObject)
         {
-            Graphics g = panel.CreateGraphics();
-            Bitmap bmp = new Bitmap(panel.Width, panel.Height);
-            panel.DrawToBitmap(bmp, new Rectangle(0, 0, panel.Width, panel.Height));
-
-            return bmp;
-        }
-
-        public bool PanelBmpExist(string path = "./")
-        {
-            bool state = false;
-
-            path += "test";
 
             try
             {
-                StreamReader sr = new StreamReader(path);
-                state = true;
-                sr.Close();
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-                state = false;
-            }
+                using (FileStream stream = new FileStream(fileName, FileMode.Create))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(ConfigShape));
+                    xml.Serialize(stream, shapeObject);
 
-            return state;
-        }
-
-        public void Save(Panel panel)
-        {
-            Bitmap bmp;
-            string state = "";
-            bool fileIsAlive = PanelBmpExist();
-
-            if(panel == null)
-            {
-                return;
-            }
-
-
-
-            if(fileIsAlive == true)
-            {
-                //MessageBox.Show("Már létezik");
-                bmp = ConvertPanelToBitmap(panel);
-                bmp.Save("test");
-                state = "mentve";
-                MessageBox.Show(state == "" ? "nem lett mentve" : state);
-                return;
-            }
-
-            try
-            {
-                bmp = ConvertPanelToBitmap(panel);
-                bmp.Save("test");
-                state = "mentve";
+                }
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
             }
-            finally
-            {
-                //MessageBox.Show(state == "" ? "nem lett mentve" : state);
-            }
         }
 
+        public static ConfigShape Deserialize(string fileName = "Save.xml")
+        {
+            ConfigShape Output = new ConfigShape();
+            try
+            {
+                using (FileStream stream = new FileStream(fileName, FileMode.Open))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(ConfigShape));
+                    Output = (ConfigShape)xml.Deserialize(stream);
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+            return Output;
+        }
+
+        public static void Save(Panel workPanel, string fileName = "Save.xml")
+        {
+            ConfigShape shape = new ConfigShape();
+
+            if (fileName == null || workPanel == null)
+            {
+                return;
+            }
+
+            try
+            {
+
+                foreach (var item in workPanel.Controls)
+                {
+                    if (item.GetType().ToString().Contains("PictureBox"))
+                        shape.Elements.Add(Shape.ToObject(item));
+                }
+
+                Serialize(fileName, shape);
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+                MessageBox.Show("Save probléma");
+            }
+        }
+        public static List<PictureBox> Load(string fileName = "Save.xml")
+        {
+            if (fileName == null)
+            {
+                return new List<PictureBox>();
+            }
+
+            List<PictureBox> Output = new List<PictureBox>();
+
+            try
+            {
+                ConfigShape loadedShapes = Deserialize();
+                foreach (var shape in loadedShapes.Elements)
+                {
+                    PictureBox generatedPictureBox = (PictureBox)Shape.ToPictureBox(shape);
+
+                    Shape.AppendEvents(generatedPictureBox);
+
+                    Output.Add(generatedPictureBox);
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+            return Output;
+        }
 
     }
 

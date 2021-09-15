@@ -4,7 +4,10 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Settings.cs">
+    <Compile Update="Screens\Settings\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Screens\Upload.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

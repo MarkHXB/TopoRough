@@ -31,98 +31,8 @@ namespace TopoRough.Models
          * 3. ChildElements = Picturebox ...
          */
         
-
-        public static void Serialize(string fileName, object shapeObject)
-        {
-          
-            try
-            {
-                using(FileStream stream = new FileStream(fileName, FileMode.Create))
-                {
-                    XmlSerializer xml = new XmlSerializer(typeof(ConfigShape));
-                    xml.Serialize(stream, shapeObject);
-                    
-                }
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-        }
-
-        public static ConfigShape Deserialize(string fileName = "Save.xml")
-        {
-            ConfigShape Output = new ConfigShape();
-            try
-            {
-                using (FileStream stream = new FileStream(fileName, FileMode.Open))
-                {
-                    XmlSerializer xml = new XmlSerializer(typeof(ConfigShape));
-                    Output = (ConfigShape)xml.Deserialize(stream);
-                }
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-            return Output;
-        }
-
-        public static void Save(Panel workPanel,string fileName = "Save.xml")
-        {
-            ConfigShape shape = new ConfigShape();
-             
-            if(fileName == null || workPanel == null)
-            {
-                return;
-            }
-
-            try
-            {
-                
-                foreach (var item in workPanel.Controls)
-                {
-                    if(item.GetType().ToString().Contains("PictureBox"))
-                        shape.Elements.Add(Shape.ToObject(item));
-                }
-
-                Serialize(fileName, shape);
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-                MessageBox.Show("Save probléma");
-            }
-        }
-        public static List<PictureBox> Load(string fileName = "Save.xml")
-        {
-            if (fileName == null)
-            {
-                return new List<PictureBox>();
-            }
-
-            List<PictureBox> Output = new List<PictureBox>();
-
-            try
-            {
-                ConfigShape loadedShapes = Deserialize();
-                foreach (var shape in loadedShapes.Elements)
-                {
-                    PictureBox generatedPictureBox = (PictureBox)Shape.ToPictureBox(shape);
-
-                    AppendEvents(generatedPictureBox);
-
-                    Output.Add(generatedPictureBox);
-                }
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-
-            return Output;
-        }
-        private static Shape ToObject(object item)
+  
+        public static Shape ToObject(object item)
         {
             Shape shape = new Shape();
 
@@ -161,7 +71,7 @@ namespace TopoRough.Models
 
             return shape;
         }
-        private static PictureBox ToPictureBox(Shape shape)
+        public static PictureBox ToPictureBox(Shape shape)
         {
             PictureBox pictureBox = new PictureBox();
 
@@ -183,10 +93,10 @@ namespace TopoRough.Models
 
             return pictureBox;
         }
-        private static void AppendEvents(PictureBox pictureBox)
+        public static void AppendEvents(PictureBox pictureBox)
         {
-            pictureBox.MouseDown += EventsHandler.Shape_MouseDown;
-            pictureBox.MouseUp += EventsHandler.Shape_MouseUp;
+            pictureBox.MouseMove += EventsHandler.shapeMoving_MouseMove;
+            pictureBox.MouseDown += EventsHandler.shapeMoving_MouseDown;
         }
     }
 }

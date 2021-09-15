@@ -39,8 +39,8 @@ namespace TopoRough.Screens.MainScreen
                     shape.Item.Name = shape.Title.ToLower() + "Shape" + counter.ToString();
                     shape.Item.Location = new Point(panelWidth / 2 - shape.Item.Size.Width / 2, lastItemLocY);
 
-                    shape.Item.MouseDown += EventsHandler.Shape_MouseDown;
-                    shape.Item.MouseUp += EventsHandler.Shape_MouseUp;
+                    shape.Item.MouseDown += EventsHandler.shapeMoving_MouseDown;
+                    shape.Item.MouseMove += EventsHandler.shapeMoving_MouseMove;
 
                     panel.Controls.Add(shape.Item);
 

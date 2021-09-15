@@ -38,7 +38,16 @@ namespace TopoRough
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainMenuPanel = new System.Windows.Forms.PictureBox();
             this.sandboxPanel = new System.Windows.Forms.Panel();
+            this.editToolPanel = new System.Windows.Forms.Panel();
+            this.colorList = new System.Windows.Forms.ListBox();
+            this.createChainButton = new System.Windows.Forms.PictureBox();
+            this.fontSizeList = new System.Windows.Forms.ListBox();
+            this.fontList = new System.Windows.Forms.ListBox();
+            this.italicButton = new System.Windows.Forms.PictureBox();
+            this.underLineButton = new System.Windows.Forms.PictureBox();
+            this.boldButton = new System.Windows.Forms.PictureBox();
             this.shapeItemsPanel = new System.Windows.Forms.Panel();
+            this.shapesOpenCloseButton = new System.Windows.Forms.PictureBox();
             this.saveButton = new System.Windows.Forms.PictureBox();
             this.saveLink = new System.Windows.Forms.LinkLabel();
             this.savePanel = new System.Windows.Forms.Panel();
@@ -52,7 +61,6 @@ namespace TopoRough
             this.exitLink = new System.Windows.Forms.LinkLabel();
             this.exitButton = new System.Windows.Forms.PictureBox();
             this.shapePanel = new System.Windows.Forms.Panel();
-            this.shapesOpenCloseButton = new System.Windows.Forms.PictureBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.homePanel = new System.Windows.Forms.Panel();
             this.homeButton = new System.Windows.Forms.PictureBox();
@@ -62,6 +70,12 @@ namespace TopoRough
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuPanel)).BeginInit();
             this.sandboxPanel.SuspendLayout();
+            this.editToolPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.createChainButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.italicButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.underLineButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boldButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapesOpenCloseButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).BeginInit();
             this.savePanel.SuspendLayout();
             this.uploadPanel.SuspendLayout();
@@ -71,7 +85,6 @@ namespace TopoRough
             this.exitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitButton)).BeginInit();
             this.shapePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.shapesOpenCloseButton)).BeginInit();
             this.homePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.homeButton)).BeginInit();
             this.SuspendLayout();
@@ -93,6 +106,8 @@ namespace TopoRough
             // editLink
             // 
             this.editLink.ActiveLinkColor = System.Drawing.Color.Black;
+            this.editLink.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.editLink.AutoSize = true;
             this.editLink.BackColor = System.Drawing.Color.Gold;
             this.editLink.DisabledLinkColor = System.Drawing.Color.White;
@@ -110,6 +125,8 @@ namespace TopoRough
             // 
             // editButton
             // 
+            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.editButton.Image = ((System.Drawing.Image)(resources.GetObject("editButton.Image")));
             this.editButton.Location = new System.Drawing.Point(1196, 3);
             this.editButton.Name = "editButton";
@@ -121,6 +138,7 @@ namespace TopoRough
             // 
             // editableTitle
             // 
+            this.editableTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.editableTitle.AutoSize = true;
             this.editableTitle.Location = new System.Drawing.Point(773, 7);
             this.editableTitle.Name = "editableTitle";
@@ -163,6 +181,7 @@ namespace TopoRough
             // 
             // sandboxPanel
             // 
+            this.sandboxPanel.Controls.Add(this.editToolPanel);
             this.sandboxPanel.Controls.Add(this.shapeItemsPanel);
             this.sandboxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sandboxPanel.Location = new System.Drawing.Point(192, 0);
@@ -171,6 +190,107 @@ namespace TopoRough
             this.sandboxPanel.TabIndex = 3;
             this.sandboxPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.sandboxPanel_Paint);
             this.sandboxPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sandboxPanel_MouseDown);
+            // 
+            // editToolPanel
+            // 
+            this.editToolPanel.BackColor = System.Drawing.Color.Gold;
+            this.editToolPanel.Controls.Add(this.colorList);
+            this.editToolPanel.Controls.Add(this.createChainButton);
+            this.editToolPanel.Controls.Add(this.fontSizeList);
+            this.editToolPanel.Controls.Add(this.fontList);
+            this.editToolPanel.Controls.Add(this.italicButton);
+            this.editToolPanel.Controls.Add(this.underLineButton);
+            this.editToolPanel.Controls.Add(this.boldButton);
+            this.editToolPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.editToolPanel.Location = new System.Drawing.Point(228, 0);
+            this.editToolPanel.Name = "editToolPanel";
+            this.editToolPanel.Size = new System.Drawing.Size(821, 34);
+            this.editToolPanel.TabIndex = 1;
+            this.editToolPanel.Visible = false;
+            // 
+            // colorList
+            // 
+            this.colorList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.colorList.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.colorList.FormattingEnabled = true;
+            this.colorList.ItemHeight = 17;
+            this.colorList.Items.AddRange(new object[] {
+            "Green"});
+            this.colorList.Location = new System.Drawing.Point(155, 7);
+            this.colorList.Name = "colorList";
+            this.colorList.Size = new System.Drawing.Size(120, 21);
+            this.colorList.TabIndex = 13;
+            // 
+            // createChainButton
+            // 
+            this.createChainButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.createChainButton.Image = global::TopoRough.Properties.Resources.link_solid;
+            this.createChainButton.Location = new System.Drawing.Point(23, 7);
+            this.createChainButton.Name = "createChainButton";
+            this.createChainButton.Size = new System.Drawing.Size(40, 21);
+            this.createChainButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.createChainButton.TabIndex = 12;
+            this.createChainButton.TabStop = false;
+            this.createChainButton.Click += new System.EventHandler(this.createChainButton_Click);
+            // 
+            // fontSizeList
+            // 
+            this.fontSizeList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.fontSizeList.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fontSizeList.FormattingEnabled = true;
+            this.fontSizeList.ItemHeight = 17;
+            this.fontSizeList.Items.AddRange(new object[] {
+            "11"});
+            this.fontSizeList.Location = new System.Drawing.Point(465, 7);
+            this.fontSizeList.Name = "fontSizeList";
+            this.fontSizeList.Size = new System.Drawing.Size(120, 21);
+            this.fontSizeList.TabIndex = 11;
+            // 
+            // fontList
+            // 
+            this.fontList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.fontList.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fontList.FormattingEnabled = true;
+            this.fontList.ItemHeight = 17;
+            this.fontList.Items.AddRange(new object[] {
+            "Arial"});
+            this.fontList.Location = new System.Drawing.Point(339, 7);
+            this.fontList.Name = "fontList";
+            this.fontList.Size = new System.Drawing.Size(120, 21);
+            this.fontList.TabIndex = 10;
+            // 
+            // italicButton
+            // 
+            this.italicButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.italicButton.Image = global::TopoRough.Properties.Resources.italic_solid;
+            this.italicButton.Location = new System.Drawing.Point(769, 7);
+            this.italicButton.Name = "italicButton";
+            this.italicButton.Size = new System.Drawing.Size(40, 21);
+            this.italicButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.italicButton.TabIndex = 9;
+            this.italicButton.TabStop = false;
+            // 
+            // underLineButton
+            // 
+            this.underLineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.underLineButton.Image = global::TopoRough.Properties.Resources.underline_solid;
+            this.underLineButton.Location = new System.Drawing.Point(697, 7);
+            this.underLineButton.Name = "underLineButton";
+            this.underLineButton.Size = new System.Drawing.Size(40, 21);
+            this.underLineButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.underLineButton.TabIndex = 8;
+            this.underLineButton.TabStop = false;
+            // 
+            // boldButton
+            // 
+            this.boldButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.boldButton.Image = global::TopoRough.Properties.Resources.bold_solid;
+            this.boldButton.Location = new System.Drawing.Point(631, 7);
+            this.boldButton.Name = "boldButton";
+            this.boldButton.Size = new System.Drawing.Size(40, 21);
+            this.boldButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.boldButton.TabIndex = 7;
+            this.boldButton.TabStop = false;
             // 
             // shapeItemsPanel
             // 
@@ -183,6 +303,19 @@ namespace TopoRough
             this.shapeItemsPanel.TabIndex = 0;
             this.shapeItemsPanel.Visible = false;
             this.shapeItemsPanel.MouseLeave += new System.EventHandler(this.shapeItemsPanel_MouseLeave);
+            // 
+            // shapesOpenCloseButton
+            // 
+            this.shapesOpenCloseButton.BackColor = System.Drawing.Color.Gold;
+            this.shapesOpenCloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.shapesOpenCloseButton.Image = global::TopoRough.Properties.Resources.cube_solid;
+            this.shapesOpenCloseButton.Location = new System.Drawing.Point(18, 16);
+            this.shapesOpenCloseButton.Name = "shapesOpenCloseButton";
+            this.shapesOpenCloseButton.Size = new System.Drawing.Size(49, 34);
+            this.shapesOpenCloseButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.shapesOpenCloseButton.TabIndex = 6;
+            this.shapesOpenCloseButton.TabStop = false;
+            this.shapesOpenCloseButton.Click += new System.EventHandler(this.shapesOpenCloseButton_Click);
             // 
             // saveButton
             // 
@@ -363,19 +496,6 @@ namespace TopoRough
             this.shapePanel.Size = new System.Drawing.Size(183, 61);
             this.shapePanel.TabIndex = 14;
             // 
-            // shapesOpenCloseButton
-            // 
-            this.shapesOpenCloseButton.BackColor = System.Drawing.Color.Gold;
-            this.shapesOpenCloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.shapesOpenCloseButton.Image = ((System.Drawing.Image)(resources.GetObject("shapesOpenCloseButton.Image")));
-            this.shapesOpenCloseButton.Location = new System.Drawing.Point(133, 15);
-            this.shapesOpenCloseButton.Name = "shapesOpenCloseButton";
-            this.shapesOpenCloseButton.Size = new System.Drawing.Size(49, 34);
-            this.shapesOpenCloseButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.shapesOpenCloseButton.TabIndex = 6;
-            this.shapesOpenCloseButton.TabStop = false;
-            this.shapesOpenCloseButton.Click += new System.EventHandler(this.shapesOpenCloseButton_Click);
-            // 
             // linkLabel2
             // 
             this.linkLabel2.ActiveLinkColor = System.Drawing.Color.Black;
@@ -385,7 +505,7 @@ namespace TopoRough
             this.linkLabel2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel2.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel2.Location = new System.Drawing.Point(18, 20);
+            this.linkLabel2.Location = new System.Drawing.Point(102, 21);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(64, 21);
             this.linkLabel2.TabIndex = 5;
@@ -454,7 +574,10 @@ namespace TopoRough
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1257, 594);
             this.Name = "MainScreen";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TopoRough";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainScreen_FormClosing);
             this.Load += new System.EventHandler(this.MainScreen_Load);
             this.subMenuPanel.ResumeLayout(false);
             this.subMenuPanel.PerformLayout();
@@ -462,6 +585,12 @@ namespace TopoRough
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainMenuPanel)).EndInit();
             this.sandboxPanel.ResumeLayout(false);
+            this.editToolPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.createChainButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.italicButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.underLineButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boldButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shapesOpenCloseButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveButton)).EndInit();
             this.savePanel.ResumeLayout(false);
             this.savePanel.PerformLayout();
@@ -476,7 +605,6 @@ namespace TopoRough
             ((System.ComponentModel.ISupportInitialize)(this.exitButton)).EndInit();
             this.shapePanel.ResumeLayout(false);
             this.shapePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.shapesOpenCloseButton)).EndInit();
             this.homePanel.ResumeLayout(false);
             this.homePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.homeButton)).EndInit();
@@ -514,6 +642,14 @@ namespace TopoRough
         private System.Windows.Forms.Panel homePanel;
         private System.Windows.Forms.PictureBox homeButton;
         private System.Windows.Forms.LinkLabel homeLink;
+        private System.Windows.Forms.Panel editToolPanel;
+        private System.Windows.Forms.PictureBox boldButton;
+        private System.Windows.Forms.ListBox fontSizeList;
+        private System.Windows.Forms.ListBox fontList;
+        private System.Windows.Forms.PictureBox italicButton;
+        private System.Windows.Forms.PictureBox underLineButton;
+        private System.Windows.Forms.PictureBox createChainButton;
+        private System.Windows.Forms.ListBox colorList;
     }
 }
 
